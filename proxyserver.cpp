@@ -121,14 +121,14 @@ bool ParseHttpHead(char *buffer, HttpHeader *httpHeader)
 	//GET request
 	if(p[0] == 'G')
 	{
-		memcpy(httpHeader->method, "GET", 3);
-		memcpy(httpHeader->url, &p[4], strlen(p) - 13);
+		memcpy(&httpHeader->method, "GET", 3);
+		memcpy(&httpHeader->url, &p[4], strlen(p) - 13);
 	}
 	//POST
 	else if(p[0] == 'P')
 	{
-		memcpy(httpHeader->method, "POST", 4);
-		memcpy(httpHeader->url, &p[5], strlen(p) - 14);
+		memcpy(&httpHeader->method, "POST", 4);
+		memcpy(&httpHeader->url, &p[5], strlen(p) - 14);
 	}
 	printf("%s\n", httpHeader->url);
 	p = strtok_r(NULL, delim, &ptr);
